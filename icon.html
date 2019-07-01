@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" 
+integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+crossorigin="">
+</script>
+<body>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin=""/>
+    <div id="mapId">
+
+    </div>
+</body>
+<script>
+var mymap = L.map('mapId').setView([34.26093154619375, 108.9421533166318], 13)
+var greenIcon = L.icon({
+    iconUrl: './image/leaf-green.png',
+    shadowUrl: './image/leaf-shadow.png',
+
+    iconSize:     [38, 95], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [23, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [8, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var redIcon = L.icon({
+    iconUrl: './image/leaf-red.png',
+    shadowUrl: './image/leaf-shadow.png',
+
+    iconSize:     [38, 95], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [23, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [8, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+var orangeIcon = L.icon({
+    iconUrl: './image/leaf-orange.png',
+    shadowUrl: './image/leaf-shadow.png',
+
+    iconSize:     [38, 95], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [23, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [8, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+
+// 2、添加一个图块层添加到我们的地图中
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiMTM2NzkxODM5NDkiLCJhIjoiY2p4YmgwMWpvMGQzczQwbXF3Y250dmlhaCJ9.D1ghaWIHnL7r5MMlQHzprg', {
+    attribution: 'this is dongwenjie map', // 右下角的文字描述
+    maxZoom: 18, // 最大伸缩层级
+    id: 'mapbox.streets', // 它是一个Mapbox Streets图块层
+    accessToken: 'pk.eyJ1IjoiMTM2NzkxODM5NDkiLCJhIjoiY2p4YmgwMWpvMGQzczQwbXF3Y250dmlhaCJ9.D1ghaWIHnL7r5MMlQHzprg'  // mapbox申请的token
+}).addTo(mymap);
+L.marker([34.26093154619375, 108.9421533166318],{icon:greenIcon}).addTo(mymap).bindPopup("我是绿色的叶子")
+
+L.marker([34.36093154619375, 109.0421533166318],{icon:redIcon}).addTo(mymap).bindPopup("我是红色的叶子")
+
+L.marker([34.4693154619375, 108.9421533166318],{icon:orangeIcon}).addTo(mymap).bindPopup("我是橘色的叶子")
+</script>
+</html>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #mapId {
+        width:100vw;
+        height:100vh;
+    }
+</style>
